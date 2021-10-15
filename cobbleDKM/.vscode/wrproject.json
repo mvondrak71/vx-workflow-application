@@ -1,0 +1,7 @@
+{
+    "sdkPath": "d:/WindRiver/StudioDeveloper/SDK/VXSDK_WINDOWS-2106-IA",
+    "envFile": "d:\\WindRiver\\StudioDeveloper\\SDK\\VXSDK_WINDOWS-2106-IA/sdkenv.bat",
+    "toolchainFile": "d:\\WindRiver\\StudioDeveloper\\SDK\\VXSDK_WINDOWS-2106-IA/vxsdk/sysroot/mk/dkm.toolchain.cmake",
+    "projectType": "CMake DKM",
+    "platformType": "VxWorks"
+}

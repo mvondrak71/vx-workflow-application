@@ -1,0 +1,54 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "philosophersRTP.vxe_gdb_qemu_VxWorks_2103-SDK2106",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "d:/WindRiver/StudioDeveloper/vx-workflow-application/philosophersRTP/build/philosophersRTP.vxe",
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "externalConsole": false,
+            "args": [],
+            "environment": [
+                {
+                    "name": "connection",
+                    "value": "qemu_VxWorks_2103-SDK2106"
+                }
+            ],
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/Users/mvondrak/AppData/Local/DevStudio/debug/VXSDK_WINDOWS-2106-IA_GDB.bat",
+            "targetArchitecture": "x86_64",
+            "miDebuggerServerAddress": "${command:DevStudio.command.project.getMiDebuggerAddress}",
+            "setupCommands": [
+                {
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "customLaunchSetupCommands": [
+                {
+                    "text": "set remotetimeout 120"
+                },
+                {
+                    "text": "target extended-remote ${command:DevStudio.command.project.getMiDebuggerAddress}"
+                },
+                {
+                    "text": "remote put d:/WindRiver/StudioDeveloper/vx-workflow-application/philosophersRTP/build/philosophersRTP.vxe /ram0/philosophersRTP.vxe"
+                },
+                {
+                    "text": "set args priority=100 stacksize=16384"
+                },
+                {
+                    "text": "set remote exec-file /ram0/philosophersRTP.vxe"
+                }
+            ],
+            "launchCompleteCommand": "exec-run",
+            "logging": {
+                "trace": true,
+                "engineLogging": true
+            },
+            "preLaunchTask": "${command:DevStudio.command.project.buildBeforeLaunch}"
+        }
+    ]
+}

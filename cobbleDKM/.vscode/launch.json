@@ -1,0 +1,85 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "cobbleDKM.out_wrdbg_qemu_VxWorks_2103-SDK2106",
+            "type": "wrdbg",
+            "request": "launch",
+            "target": "cobbleDKM.out",
+            "cwd": "d:\\WindRiver\\StudioDeveloper\\vx-workflow-application\\cobbleDKM\\build",
+            "valuesFormatting": "parseText",
+            "printCalls": false,
+            "sdkPath": "d:/WindRiver/StudioDeveloper/SDK/VXSDK_WINDOWS-2106-IA",
+            "noDebug": false,
+            "trace": false,
+            "targetIp": "${command:DevStudio.command.project.getMiDebuggerAddress}",
+            "targetType": "dkm",
+            "dkmEntrypoint": "progStart",
+            "environment": [
+                {
+                    "name": "connection",
+                    "value": "qemu_VxWorks_2103-SDK2106"
+                }
+            ],
+            "preLaunchTask": "${command:DevStudio.command.project.buildBeforeLaunch}"
+        },
+        {
+            "name": "cobbleDKM.out_gdb_qemu_VxWorks_2103-SDK2106",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "d:\\WindRiver\\StudioDeveloper\\SDK\\VXSDK_WINDOWS-2106-IA\\vxsdk\\bsps\\itl_generic_2_0_3_1\\vxWorks",
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "externalConsole": false,
+            "args": [],
+            "environment": [
+                {
+                    "name": "connection",
+                    "value": "qemu_VxWorks_2103-SDK2106"
+                }
+            ],
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/Users/mvondrak/AppData/Local/DevStudio/debug/VXSDK_WINDOWS-2106-IA_GDB.bat",
+            "targetArchitecture": "x86_64",
+            "miDebuggerServerAddress": "${command:DevStudio.command.project.getMiDebuggerAddress}",
+            "setupCommands": [
+                {
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "customLaunchSetupCommands": [
+                {
+                    "text": "set remotetimeout 120"
+                },
+                {
+                    "text": "target extended-remote ${command:DevStudio.command.project.getMiDebuggerAddress}"
+                },
+                {
+                    "text": "remote put d:/WindRiver/StudioDeveloper/vx-workflow-application/cobbleDKM/build/cobbleDKM.out /ram0/cobbleDKM.out"
+                },
+                {
+                    "text": "set args entry=progStart priority=100 stacksize=20000"
+                },
+                {
+                    "text": "source d:/WindRiver/StudioDeveloper/SDK/VXSDK_WINDOWS-2106-IA/tools/gdb/x86_64-win32/share/vx_gdb_extensions/vxloadModule.py"
+                },
+                {
+                    "text": "set solib-search-path d:/WindRiver/StudioDeveloper/vx-workflow-application/cobbleDKM/build"
+                },
+                {
+                    "text": "vxloadmodule /ram0/cobbleDKM.out"
+                },
+                {
+                    "text": "set remote exec-file kernel"
+                }
+            ],
+            "launchCompleteCommand": "exec-run",
+            "logging": {
+                "trace": true,
+                "engineLogging": true
+            },
+            "preLaunchTask": "${command:DevStudio.command.project.buildBeforeLaunch}"
+        }
+    ]
+}
